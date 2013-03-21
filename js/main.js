@@ -94,6 +94,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		document.getElementById("goals").style.display = "block";
 		for (var i = 0, j = localStorage.length; i < j; i++) {
 			var createListItem = document.createElement("li");
+			var createLinksList = document.createElement("li");
 			createUList.appendChild(createListItem);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -109,8 +110,67 @@ window.addEventListener("DOMContentLoaded", function() {
 				createSubUList.appendChild(createSubListItem);
 				var goalObjText = goalObj[n][0] + " " + goalObj[n][1];
 				createSubListItem.innerHTML = goalObjText;
+				createSubUList.appendChild(createLinksList);
 			}
+			
+			// calling the function that will create links for each goal
+			createGoalLinks(key, createLinksList);
 		}
+	}
+	
+	// Function to create buttons for editing and deleting a goal in the list
+	function createGoalLinks(key, createLinksList) {
+		
+		// adds edit goal link
+		var editGoalLink = document.createElement("a");
+		editGoalLink.href = "#";
+		editGoalLink.key = key;
+		editGoalLink.setAttribute("class", "goallinks");
+		editGoalText = "Edit Goal";
+		editGoalLink.addEventListener("click", editGoal);
+		editGoalLink.innerHTML = editGoalText;
+		createLinksList.appendChild(editGoalLink);
+	
+		// adds delete goal link
+		var deleteGoalLink = document.createElement("a");
+		deleteGoalLink.href = "#";
+		deleteGoalLink.key = key;
+		deleteGoalLink.setAttribute("class", "goallinks");
+		deleteGoalText = "Delete Goal";
+//		deleteGoalLink.addEventListener("click", deleteGoal);
+		deleteGoalLink.innerHTML = deleteGoalText;
+		createLinksList.appendChild(deleteGoalLink);
+	
+	}
+	
+	// function to edit the goal
+	function editGoal() {
+		// grab the data from this specific goal from Local Storage
+		var value = localStorage.getItem(this.key);
+		var goalObj = JSON.parse(value);
+		
+		// bring back the form to the display
+		toggleDisplay();
+	
+		// fill in the form with this specific goal data pulled from Local Storage
+		document.getElementById("goalheadline").value = goalObj.goalHeadline[1];
+		document.getElementById("types").value = goalObj.goalType[1];
+		document.getElementById("deadline").value = goalObj.deadline[1];
+		document.getElementById("size").value = goalObj.size[1];
+		document.getElementById("details").value = goalObj.details[1];
+		if (goalObj.goalcomplete[1] === "Goal Achieved") {
+			document.getElementById("goalcomplete").setAttribute("checked", "checked");
+		}
+		
+		// Remove the event listener from the "save goal" button
+		saveGoalButton.removeEventListener("click", addNewGoal);
+		
+		// Change the "save goal" value to "edit goal"
+		document.getElementById("savegoal").value = "Edit Goal";
+		var editSaveGoal = document.getElementById("savegoal");
+		
+		editSaveGoal.addEventListener("click", validate);
+		editSaveGoal.key = key;
 	}
 	
 	function clearGoalsList() {
@@ -124,6 +184,38 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 	}
 	
+	function validate() {
+		// elements to check
+		var getGoalHeadline = document.getElementById("goalheadline");
+		var getGoalType = document.getElementById("types");
+		
+		// error messages
+		var errorMessageArray = [];
+		
+		// goal headline validation
+		if(getGoalHeadline.value === "") {
+			var goalHeadlineError = "Please enter a goal.";
+			goalHeadline.style.border = "1px solid red";
+			errorMessageArray.push(goalHeadlineError);
+		}
+		
+		// goal type validation
+		if(getGoalType.value === "--Choose a Type--") {
+			var typeError = "Please select a goal type.";
+			getGoalType.style.border = "1px solid red";
+			errorMessageArray.push(typeError);
+		}
+		
+		// display errors on the screen if required form fields are not valid
+		if(errorMessageArray.length > 0) {
+			for(var i = 0, j = errorMessageArray.length; i < j; i++) {
+				var text = document.createElement("li");
+				text.innerHTML = errorMessageArray[i];
+			
+			}
+	
+	}
+	
 	// array for the goal types
 	var goalTypes = ["--Choose a Type--", "Personal", "Business", "Travel", "Finance", "Education"];
 	var goalCompleteValue = "Goal Not Yet Achieved";
@@ -133,7 +225,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	var flagDisplayData = false;
 	
 	var saveGoalButton = document.getElementById("savegoal");
-	saveGoalButton.addEventListener("click", addNewGoal);
+	saveGoalButton.addEventListener("click", validate);
 	
 	var displayDataLink = document.getElementById("display");
 	displayDataLink.addEventListener("click", displayGoalsList);
