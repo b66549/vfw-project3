@@ -1,0 +1,77 @@
+/*
+Title: index.html style sheet
+Name: Rolando Velasco
+Term: VFW 1303
+Project Part 2
+*/
+
+body {
+	background-color: #868B97;
+	color: #000000;
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica;
+}
+
+h1 {
+	background-color: #25282E;
+	color: #868B97;
+	margin: 0px;
+	padding: 5px;
+	text-align: center;
+}
+
+a:hover {
+	color: green;
+}
+
+a:active {
+	color: red;
+}
+
+div {
+	margin: 0px;
+	padding: 0px 10px;
+}
+
+form {
+	margin: 0px;
+	padding: 10px 10px;
+/*	border: 1px solid red; */
+}
+
+legend {
+	font-weight: bold;
+}
+
+label {
+	display: block;
+/*	border: 1px solid orange; */
+}
+
+ul {
+	margin: 0px;
+	padding: 0px 20px;
+/*	border: 1px solid green; */
+}
+
+input#goalheadline {
+	width: 100%;
+/*	border: 1px solid yellow; */
+}
+
+input#size {
+	width: 100%;
+/*	border: 1px solid red; */
+}
+
+label#labelgoalcomplete {
+	display: inline;
+	margin: 0px 5px 0px 0px;
+/*	border: 1px solid blue; */
+}
+
+textarea {
+	width: 100%;
+/*	border: 1px solid aqua; */
+}
