@@ -1,6 +1,6 @@
 // Name: Rolando Velasco
 // Term: VFW 1303
-// Project Part 2
+// Project Part 3
 
 // Line to wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function() {
