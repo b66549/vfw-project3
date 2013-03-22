@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	// function to create the select field element
 	function makeGoalTypes() {
-		var myformTag = document.getElementsByTagName("form"), selectList = document.getElementById("selecttype"), createSelect = document.createElement("select");
+		var selectList = document.getElementById("selecttype"), createSelect = document.createElement("select");
 		createSelect.setAttribute("id", "types");
 	
 		for(var i = 0, j = goalTypes.length; i < j; i++) {
@@ -79,13 +79,13 @@ window.addEventListener("DOMContentLoaded", function() {
 	// Grab the data from Local Storage and display it on screen
 	function displayGoalsList() {
 		
-		// toggle function to display the data
-		toggleDisplay();
-		
 		if (localStorage.length === 0) {
 			alert("There are no goals to display.");
 			return false;
 		}
+		
+		// toggle function to display the data
+		toggleDisplay();
 		
 		// Create a div tag IF one has not been created.
 		// If the list has been created, skip this block of code and only display the current list
@@ -107,6 +107,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				var goalObj = JSON.parse(value);
 			
 				var createSubUList = document.createElement("ul");
+				createSubUList.setAttribute("class", "goalinfo");
 				createListItem.appendChild(createSubUList);
 				
 				for(var n in goalObj) {

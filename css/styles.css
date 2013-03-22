@@ -1,8 +1,8 @@
 /*
-Title: index.html style sheet
+Title: index.html and additem.html style sheet
 Name: Rolando Velasco
 Term: VFW 1303
-Project Part 2
+Project Part 3
 */
 
 body {
@@ -37,7 +37,6 @@ div {
 form {
 	margin: 0px;
 	padding: 10px 10px;
-/*	border: 1px solid red; */
 }
 
 legend {
@@ -46,13 +45,11 @@ legend {
 
 label {
 	display: block;
-/*	border: 1px solid orange; */
 }
 
 ul {
 	margin: 0px;
 	padding: 0px 20px;
-/*	border: 1px solid green; */
 }
 
 ul#errors {
@@ -64,31 +61,45 @@ li {
 	list-style-type: none;
 }
 
+.addli {
+	margin-bottom: 1em;
+}
+
 input#goalheadline {
 	width: 100%;
-/*	border: 1px solid yellow; */
 }
 
 input#size {
 	width: 100%;
-/*	border: 1px solid red; */
+}
+
+input#savegoal {
+	font-size: 1em;
+	margin: 10px 0px;
 }
 
 label#labelgoalcomplete {
 	display: inline;
-	margin: 0px 5px 0px 0px;
-/*	border: 1px solid blue; */
+	margin-right: 0.5em;
 }
 
 textarea {
 	width: 100%;
-/*	border: 1px solid aqua; */
 }
 
 .goallinks {
-	margin: 0px 5px 0px 0px;
+	margin-right: 0.5em;
 }
 
 span#required {
 	font-size: 0.8em;
+}
+
+a#clear {
+	margin-left: 1em;
+	margin-right: 0.5em;
+}
+
+.goalinfo {
+	margin-bottom: 1em;
 }
