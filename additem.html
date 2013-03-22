@@ -37,6 +37,7 @@
 			<fieldset>
 				<legend>Add a New Goal</legend>
 				<span id="required">* required field</span>
+				<ul id="errors"></ul>
 				<!-- Display the elements of the form as an unordered list -->
 				<ul>
 					
@@ -46,14 +47,6 @@
 					<!-- Select combobox: Type of Goal -->
 					<li id="selecttype">
 						<label for="goaltype">*Type of Goal:</label>
-<!--						<select id="goaltype">                            -->
-						
-<!--							<option value="personal">Personal</option>    -->
-<!--							<option value="business">Business</option>    -->
-<!--							<option value="travel">Travel</option>        -->
-<!--							<option value="finance">Finance</option>      -->
-<!--							<option value="education">Education</option>  -->
-						</select>
 					</li>
 					
 					<!-- Date element: Goal deadline -->
@@ -74,7 +67,7 @@
 			</fieldset>
 			
 			<!-- Save the goal -->
-			<input type="button" value="Save Goal" id="savegoal" />
+			<input type="submit" value="Save Goal" id="savegoal" />
 		</form>
 		
 <!--		<div id="displaydata"></div> -->

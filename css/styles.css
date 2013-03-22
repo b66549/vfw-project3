@@ -55,6 +55,15 @@ ul {
 /*	border: 1px solid green; */
 }
 
+ul#errors {
+	font-weight: bold;
+	color: #B00000;
+}
+
+li {
+	list-style-type: none;
+}
+
 input#goalheadline {
 	width: 100%;
 /*	border: 1px solid yellow; */
@@ -78,4 +87,8 @@ textarea {
 
 .goallinks {
 	margin: 0px 5px 0px 0px;
+}
+
+span#required {
+	font-size: 0.8em;
 }
